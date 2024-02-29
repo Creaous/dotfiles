@@ -19,7 +19,14 @@ This setup is specifically designed for the following system specifications:
 - Kernel: 6.7.6-arch1-1
 
 Also tested with:
-- TO-DO
+
+- Computer: 82YA Legion Slim 5 16IRH8
+- Operating System: Arch Linux
+- Graphics Card: NVIDIA GeForce RTX 4050 Max-Q / Mobile 
+- Environment: Hyprland (Wayland)
+- CPU: 13th Gen Intel i5-13500H (16) @ 4.700GHz
+- Memory: 16GB
+- Kernel: 6.7.6-arch1-1
 
 Please note that while these dotfiles may work on other systems, they are specifically tailored to this setup and may not function as expected on different hardware or software configurations.
 
