@@ -73,4 +73,4 @@ If you have suggestions for improving these dotfiles, please open an issue or su
 Please create an issue or submit a pull request to fix these issues.
 
 ## License
-These dotfiles are released under the MIT License. See `LICENSE` for more details.
+These dotfiles are released under the MIT License. See [LICENSE](/LICENSE) for more details.
