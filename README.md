@@ -68,6 +68,8 @@ To use these dotfiles, you can run the one-liner script:
 curl -L https://raw.githubusercontent.com/Creaous/dotfiles/main/one-liner.sh | sh
 ```
 
+Please note that this will overwrite any existing files in those locations.
+
 ## Fix IntelliJ IDEA
 
 _note: this is NOT included in my one-liner script._
@@ -78,7 +80,10 @@ IntelliJ IDEA has problems running under Wayland, Jetbrains has created a beta
 curl -L https://raw.githubusercontent.com/Creaous/dotfiles/main/install-jbr-runtime.sh | sh
 ```
 
-Please note that this will overwrite any existing files in those locations.
+### Also...
+
+1. Help | Edit Custom Properties...
+2. Enter `suppress.focus.stealing=false`
 
 ## Contributing
 
