@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "cpu", "memory", "temperature", "battery", "clock", "tray"],
+    "modules-right": ["mpd", "pulseaudio", "cpu", "memory", "temperature", "battery", "clock", "tray"],
     "margin-top": 6,
     "margin-left": 6,
     "margin-right": 6,
@@ -36,6 +36,16 @@
         "format-icons": {
             "locked": "",
             "unlocked": ""
+        }
+    },
+    "clock": {
+        "timezones": ["America/New_York"],
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
         }
     },
     "hyprland/workspaces": {
@@ -156,7 +166,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol-qt"
+        "on-click": "pavucontrol"
     },
     "custom/media": {
         "format": "{icon} {}",

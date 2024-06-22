@@ -1,3 +1,4 @@
+before-sleep "swaylock --clock --indicator"
 lock "swaylock --clock --indicator"
 unlock "pkill -9 swaylock"
 idlehint 580

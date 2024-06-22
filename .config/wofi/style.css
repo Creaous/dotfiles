@@ -37,6 +37,10 @@ window {
 	background-color: #404552;
 }
 
+#entry:nth-child(odd){
+	background-color: #383C4A;
+}
+
 #entry:selected {
 	background-color: #4C566A;
 }
