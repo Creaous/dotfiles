@@ -130,3 +130,9 @@ packages:
   - name: fastfetch # system info
     install: true
     configs: []
+  - name: blueman # bluetooth manager
+    install: true
+    configs: []
+  - name: bluez # bluetooth daemon
+    install: true
+    configs: []

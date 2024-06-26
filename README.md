@@ -70,6 +70,14 @@ curl -L https://raw.githubusercontent.com/Creaous/dotfiles/main/one-liner.sh | s
 
 Please note that this will overwrite any existing files in those locations.
 
+### Ansible
+
+I have created a set of Ansible playbooks to automate the setup of these dotfiles:
+
+```bash
+curl -L https://raw.githubusercontent.com/Creaous/dotfiles/main/ansible.sh | sh
+```
+
 ## Fix IntelliJ IDEA
 
 _note: this is NOT included in my one-liner script._
