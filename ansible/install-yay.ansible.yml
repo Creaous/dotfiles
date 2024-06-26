@@ -1,0 +1,58 @@
+---
+- name: Install yay (AUR helper)
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if yay is installed
+      become: false
+      ansible.builtin.command:
+        cmd: /usr/bin/yay -V
+      changed_when: false
+      register: yay_version
+      ignore_errors: true
+    - name: Install yay if not installed
+      when: yay_version.stdout is not search('yay v')
+      block:
+        - name: Check if temp yay directory exists
+          ansible.builtin.stat:
+            path: /tmp/yay
+          register: yay_tmp_dir
+        - name: Install dependencies
+          when: not yay_tmp_dir.stat.exists
+          community.general.pacman:
+            name:
+              - git
+              - base-devel
+            state: present
+            update_cache: true
+        - name: Clone yay repository
+          when: not yay_tmp_dir.stat.exists
+          ansible.builtin.git:
+            repo: https://aur.archlinux.org/yay.git
+            dest: /tmp/yay
+            version: master
+        - name: Give permissions to yay directory
+          when: not yay_tmp_dir.stat.exists
+          ansible.builtin.file:
+            path: /tmp/yay
+            mode: "0777"
+            recurse: true
+            owner: "{{ user }}"
+            group: "{{ user }}"
+        - name: Install yay
+          become: false
+          ansible.builtin.command:
+            cmd: /usr/bin/makepkg -si --noconfirm
+            chdir: /tmp/yay
+            creates: /usr/bin/yay
+        - name: Test yay by getting version
+          ansible.builtin.command:
+            cmd: /usr/bin/yay -V
+          changed_when: true
+          register: yay_version_two
+        - name: Remove temp yay
+          ansible.builtin.file:
+            path: /tmp/yay
+            state: absent
+          when: yay_version_two.stdout is search('yay v')
+          failed_when: false

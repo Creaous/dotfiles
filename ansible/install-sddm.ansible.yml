@@ -1,0 +1,40 @@
+---
+- name: Install SDDM
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if sddm is installed
+      ansible.builtin.command:
+        cmd: /usr/bin/pacman -Q sddm
+      changed_when: false
+      register: sddm_version
+      ignore_errors: true
+    - name: Install dependencies
+      when: not sddm_version.stdout is search('sddm')
+      community.general.pacman:
+        name:
+          - sddm
+        state: present
+        update_cache: true
+    - name: Enable sddm service
+      when: not sddm_version.stdout is search('sddm')
+      ansible.builtin.systemd:
+        name: sddm
+        enabled: true
+        state: stopped
+        daemon_reload: true
+    - name: Enable auto login
+      ansible.builtin.lineinfile:
+        dest: /etc/sddm.conf.d/autologin.conf
+        line: "{{ item }}"
+      with_items:
+        - "[Autologin]"
+        - "User={{ user }}"
+        - "Session=hyprland"
+    - name: Add catppuccin-mocha to sddm.conf.d
+      ansible.builtin.lineinfile:
+        dest: /etc/sddm.conf.d/catppuccin.conf
+        line: "{{ item }}"
+      with_items:
+        - "[Theme]"
+        - "Current=catppuccin-mocha"

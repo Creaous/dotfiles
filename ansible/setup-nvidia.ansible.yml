@@ -1,0 +1,37 @@
+---
+- name: Setup NVIDIA BETA drivers (DKMS)
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if nvidia is installed
+      ansible.builtin.command:
+        cmd: /usr/bin/pacman -Q nvidia-beta-dkms
+      changed_when: false
+      register: nvidia_version
+      ignore_errors: true
+    - name: Install yay if not installed
+      when: nvidia_version.stdout is not search('nvidia-beta-dkms')
+      block:
+        - name: Install nvidia-beta-dkms
+          yay:
+            name: nvidia-dkms
+            state: present
+            update_cache: true
+        - name: Setup modeset for nvidia-drm
+          ansible.builtin.lineinfile:
+            path: /etc/modprobe.d/nvidia.conf
+            line: options nvidia-drm modeset=1
+            mode: "0644"
+            create: true
+            state: present
+        - name: Disable nouveau
+          ansible.builtin.lineinfile:
+            path: /etc/modprobe.d/nvidia.conf
+            line: blacklist nouveau
+            state: present
+        - name: Add to mkinitcpio.conf
+          ansible.builtin.lineinfile:
+            path: /etc/mkinitcpio.conf
+            regexp: "^MODULES=()"
+            line: "MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)"
+            state: present

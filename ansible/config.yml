@@ -1,0 +1,132 @@
+user: mitchell
+password: P@ssw0rd
+packages:
+  - name: swaync # notification daemon
+    install: true
+    configs:
+      - src: ../.config/dunst/dunstrc
+        dest: /home/{{ user }}/.config/swaync/config.json
+        mode: "0644"
+      - src: ../.config/swaync/style.css
+        dest: /home/{{ user }}/.config/swaync/style.css
+        mode: "0644"
+  - name: kitty # terminal emulator
+    install: true
+    configs:
+      - src: ../.config/kitty/kitty.conf
+        dest: /home/{{ user }}/.config/kitty/kitty.conf
+        mode: "0644"
+  - name: swayidle # idle manager
+    install: true
+    configs:
+      - src: ../.config/swayidle/config
+        dest: /home/{{ user }}/.config/swayidle/config
+        mode: "0644"
+  - name: swaylock-effects # screen locker
+    install: true
+    configs:
+      - src: ../.config/swaylock/config
+        dest: /home/{{ user }}/.config/swaylock/config
+        mode: "0644"
+  - name: waybar # status bar
+    install: true
+    configs:
+      - src: ../.config/waybar/config
+        dest: /home/{{ user }}/.config/waybar/config
+        mode: "0644"
+      - src: ../.config/waybar/style.css
+        dest: /home/{{ user }}/.config/waybar/style.css
+        mode: "0644"
+      - src: ../.config/waybar/mocha.css
+        dest: /home/{{ user }}/.config/waybar/mocha.css
+        mode: "0644"
+  - name: wofi # launcher
+    install: true
+    configs:
+      - src: ../.config/wofi/style.css
+        dest: /home/{{ user }}/.config/wofi/style.css
+        mode: "0644"
+  - name: hyprland # window manager
+    install: true
+    configs:
+      - src: ../.config/hypr/hyprland.conf
+        dest: /home/{{ user }}/.config/hypr/hyprland.conf
+        mode: "0644"
+      - src: ../.config/hypr/mocha.conf
+        dest: /home/{{ user }}/.config/hypr/mocha.conf
+        mode: "0644"
+  - name: hyprpaper # background manager
+    install: true
+    configs:
+      - src: ../.config/hypr/hyprpaper.conf
+        dest: /home/{{ user }}/.config/hypr/hyprpaper.conf
+        mode: "0644"
+  - name: ddcutil # controls external display brightness
+    install: true
+    configs:
+      - src: ../.config/hypr/brightness.sh
+        dest: /home/{{ user }}/.config/hypr/brightness.sh
+        mode: "a+x"
+  - name: backlight_control # controls laptop backlight
+    install: true
+    configs: []
+  - name: nwg-displays # monitor configuration
+    install: true
+    configs:
+      - src: ../.config/hypr/monitors.conf
+        dest: /home/{{ user }}/.config/hypr/monitors.conf
+        mode: "0644"
+  - name: floorp-bin # web browser
+    install: true
+    configs: []
+  - name: qt6-svg # required for catppuccin sddm theme
+    install: true
+    configs: []
+  - name: qt6-declarative # required for catppuccin sddm theme
+    install: true
+    configs: []
+  - name: poweralertd # power manager
+    install: true
+    configs: []
+  - name: wl-clipboard # clipboard manager
+    install: true
+    configs: []
+  - name: cliphist # clipboard history
+    install: true
+    configs: []
+  - name: grimblast-git # screenshot tool
+    install: true
+    configs: []
+  - name: xwaylandvideobridge-git # wayland video bridge
+    install: true
+    configs: []
+  - name: qt6ct # qt6 theme controller
+    install: true
+    configs: []
+  - name: xfce-polkit # xfce polkit
+    install: true
+    configs: []
+  - name: hyprpicker # colour picker
+    install: true
+    configs: []
+  - name: dolphin # file manager
+    install: true
+    configs:
+      - src: ../.config/dolphin/dark.qss
+        dest: /home/{{ user }}/.local/share/dolphin/dark.qss
+        mode: "0644"
+  - name: kwalletmanager # wallet manager
+    install: true
+    configs: []
+  - name: kwallet-pam # pam module for kwallet
+    install: true
+    configs: []
+  - name: zsh
+    install: true
+    configs:
+      - src: ../other/.zshrc
+        dest: /home/{{ user }}/.zshrc
+        mode: "0644"
+  - name: fastfetch # system info
+    install: true
+    configs: []

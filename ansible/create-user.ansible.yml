@@ -1,0 +1,26 @@
+---
+- name: User Management
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure sudo is installed
+      ansible.builtin.package:
+        name: sudo
+        state: present
+    - name: Uncomment sudoers
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        # regexp: "^# %sudo"
+        # line: "%sudo ALL=(ALL:ALL) ALL"
+        line: "\n%sudo ALL=(ALL) NOPASSWD: ALL"
+    - name: Create sudo group
+      ansible.builtin.group:
+        name: sudo
+        state: present
+        system: true
+    - name: Create user
+      ansible.builtin.user:
+        name: "{{ user }}"
+        state: present
+        groups: sudo
+        password: "{{ password | ansible.builtin.password_hash('sha512') }}"

@@ -1,0 +1,62 @@
+---
+- name: Setup Powerlevel10k for ZSH
+  hosts: all
+  become: true
+  tasks:
+    - name: Set default shell to ZSH
+      ansible.builtin.command:
+        cmd: chsh -s /usr/bin/zsh {{ user }}
+      changed_when: false
+      register: chsh_version
+      ignore_errors: true
+    - name: Download powerlevel10k
+      become: false
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: /home/{{ user }}/.oh-my-zsh/custom/themes/powerlevel10k
+        version: master
+    - name: Download zsh-syntax-highlighting
+      become: false
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: /home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        version: master
+    - name: Download zsh-autosuggestions
+      become: false
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: /home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        version: master
+    - name: Copy over Powerlevel10k config
+      become: false
+      ansible.builtin.copy:
+        src: ../other/.p10k.zsh
+        dest: /home/{{ user }}/.p10k.zsh
+        mode: "0644"
+    - name: Download patched fonts
+      block:
+        - name: Create directory for fonts
+          ansible.builtin.file:
+            path: /usr/share/fonts/p10k
+            state: directory
+            mode: "0755"
+        - name: Download MesloLGS NF Regular
+          ansible.builtin.get_url:
+            url: https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Regular.ttf
+            dest: /usr/share/fonts/p10k/MesloLGS\ NF\ Regular.ttf
+            mode: "0644"
+        - name: Download MesloLGS NF Bold
+          ansible.builtin.get_url:
+            url: https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Bold.ttf
+            dest: /usr/share/fonts/p10k/MesloLGS\ NF\ Bold.ttf
+            mode: "0644"
+        - name: Download MesloLGS NF Italic
+          ansible.builtin.get_url:
+            url: https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Italic.ttf
+            dest: /usr/share/fonts/p10k/MesloLGS\ NF\ Italic.ttf
+            mode: "0644"
+        - name: Download MesloLGS NF Bold Italic
+          ansible.builtin.get_url:
+            url: https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Bold%20Italic.ttf
+            dest: /usr/share/fonts/p10k/MesloLGS\ NF\ Bold\ Italic.ttf
+            mode: "0644"
