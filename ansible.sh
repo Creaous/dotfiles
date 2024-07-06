@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Ensuring dependencies are installed"
+
 # Check if git is installed, if not, install it using pacman.
 if ! command -v git &> /dev/null; then
     sudo pacman -Sy --noconfirm git
@@ -10,7 +12,8 @@ if ! command -v git &> /dev/null; then
     sudo pacman -Sy --noconfirm ansible
 fi
 
-sudo pacman -Sy --noconfirm python-passlib unzip
+pacman -Qs python-passlib &> /dev/null || sudo pacman -Sy --noconfirm python-passlib
+pacman -Qs unzip &> /dev/null || sudo pacman -Sy --noconfirm unzip
 
 # Clone the dotfiles repository.
 git clone https://github.com/Creaous/dotfiles.git
