@@ -154,3 +154,9 @@ packages:
   - name: hunspell-en_au # language pack
     install: true
     configs: []
+  - name: nm-connection-editor # network manager
+    install: true
+    configs: []
+  - name: nvidia-settings # nvidia driver
+    install: true
+    configs: []
