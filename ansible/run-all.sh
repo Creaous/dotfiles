@@ -24,7 +24,11 @@ echo "Executing stage 1 of the scripts"
 
 # Execute stage 2 as the retrieved user
 echo "Executing stage 2 of the scripts as user: $user"
-sudo -E -u $user ./stage-2.sh
+cp -R ../ /home/$user/dotfiles
+chmod -R 777 /home/$user/dotfiles
+chown -R $user:$user /home/$user/dotfiles
+cd /home/$user/dotfiles/ansible
+sudo -H -u $user bash -c './stage-2.sh'
 
 # (Hopefully) it completed successfully.
 echo "(Hopefully) it completed successfully."
