@@ -18,9 +18,14 @@
         name: sudo
         state: present
         system: true
+    - name: Create seat group
+      ansible.builtin.group:
+        name: seat
+        state: present
+        system: true
     - name: Create user
       ansible.builtin.user:
         name: "{{ user }}"
         state: present
-        groups: sudo
+        groups: sudo,seat,video
         password: "{{ password | ansible.builtin.password_hash('sha512') }}"
