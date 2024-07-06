@@ -23,17 +23,15 @@
         enabled: true
         state: stopped
         daemon_reload: true
-    - name: Ensure that autologin.conf exists
+    - name: Ensure that sddm.conf.d exists
       ansible.builtin.file:
-        path: /etc/sddm.conf.d/autologin.conf
-        recurse: true
-    - name: Ensure that catppuccin.conf exists
-      ansible.builtin.file:
-        path: /etc/sddm.conf.d/catppuccin.conf
+        path: /etc/sddm.conf.d
+        state: directory
         recurse: true
     - name: Enable auto login
       ansible.builtin.lineinfile:
         dest: /etc/sddm.conf.d/autologin.conf
+        create: true
         line: "{{ item }}"
       with_items:
         - "[Autologin]"
@@ -42,6 +40,7 @@
     - name: Add catppuccin-mocha to sddm.conf.d
       ansible.builtin.lineinfile:
         dest: /etc/sddm.conf.d/catppuccin.conf
+        create: true
         line: "{{ item }}"
       with_items:
         - "[Theme]"
