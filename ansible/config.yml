@@ -37,8 +37,8 @@ packages:
       - src: ../.config/waybar/style.css
         dest: /home/{{ user }}/.config/waybar/style.css
         mode: "0644"
-      - src: ../.config/waybar/mocha.css
-        dest: /home/{{ user }}/.config/waybar/mocha.css
+      - src: ../.config/waybar/catppuccin.css
+        dest: /home/{{ user }}/.config/waybar/catppuccin.css
         mode: "0644"
   - name: wofi # launcher
     install: true
@@ -52,8 +52,8 @@ packages:
       - src: ../.config/hypr/hyprland.conf
         dest: /home/{{ user }}/.config/hypr/hyprland.conf
         mode: "0644"
-      - src: ../.config/hypr/mocha.conf
-        dest: /home/{{ user }}/.config/hypr/mocha.conf
+      - src: ../.config/hypr/catppuccin.conf
+        dest: /home/{{ user }}/.config/hypr/catppuccin.conf
         mode: "0644"
   - name: hyprpaper # background manager
     install: true
