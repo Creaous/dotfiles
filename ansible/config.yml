@@ -57,10 +57,7 @@ packages:
         mode: "0644"
   - name: hyprpaper # background manager
     install: true
-    configs:
-      - src: ../.config/hypr/hyprpaper.conf
-        dest: /home/{{ user }}/.config/hypr/hyprpaper.conf
-        mode: "0644"
+    configs: []
   - name: ddcutil # controls external display brightness
     install: true
     configs:
