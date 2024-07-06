@@ -97,6 +97,9 @@ packages:
   - name: qt6ct # qt6 theme controller
     install: true
     configs: []
+  - name: qt5ct # qt5 theme controller
+    install: true
+    configs: []
   - name: xfce-polkit # xfce polkit
     install: true
     configs: []
@@ -137,5 +140,8 @@ packages:
     install: true
     configs: []
   - name: kate # gui editor
+    install: true
+    configs: []
+  - name: nwg-look # gtk settings
     install: true
     configs: []
