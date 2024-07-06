@@ -145,3 +145,12 @@ packages:
   - name: nwg-look # gtk settings
     install: true
     configs: []
+  - name: libreoffice-fresh # office suite
+    install: true
+    configs: []
+  - name: hunspell # spell checker
+    install: true
+    configs: []
+  - name: hunspell-en_au # language pack
+    install: true
+    configs: []
