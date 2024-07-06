@@ -97,9 +97,6 @@ packages:
   - name: grimblast-git # screenshot tool
     install: true
     configs: []
-  - name: xwaylandvideobridge-git # wayland video bridge
-    install: true
-    configs: []
   - name: qt6ct # qt6 theme controller
     install: true
     configs: []
