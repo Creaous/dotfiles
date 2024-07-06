@@ -75,7 +75,7 @@ Please note that this will overwrite any existing files in those locations.
 I have created a set of Ansible playbooks to automate the setup of these dotfiles:
 
 ```bash
-curl -L https://raw.githubusercontent.com/Creaous/dotfiles/main/ansible.sh | sh
+source <(curl -L https://raw.githubusercontent.com/Creaous/dotfiles/main/ansible.sh)
 ```
 
 ## Fix IntelliJ IDEA
