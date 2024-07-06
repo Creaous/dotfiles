@@ -23,6 +23,14 @@
         enabled: true
         state: stopped
         daemon_reload: true
+    - name: Ensure that autologin.conf exists
+      ansible.builtin.file:
+        path: /etc/sddm.conf.d/autologin.conf
+        recurse: true
+    - name: Ensure that catppuccin.conf exists
+      ansible.builtin.file:
+        path: /etc/sddm.conf.d/catppuccin.conf
+        recurse: true
     - name: Enable auto login
       ansible.builtin.lineinfile:
         dest: /etc/sddm.conf.d/autologin.conf
