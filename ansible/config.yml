@@ -127,6 +127,15 @@ packages:
   - name: blueman # bluetooth manager
     install: true
     configs: []
-  - name: bluez # bluetooth daemon
+  - name: pipewire # audio
+    install: true
+    configs: []
+  - name: pipewire-pulse # pulseaudio
+    install: true
+    configs: []
+  - name: pavucontrol # audio control
+    install: true
+    configs: []
+  - name: kate # gui editor
     install: true
     configs: []
