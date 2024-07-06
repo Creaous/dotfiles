@@ -10,6 +10,8 @@ if ! command -v git &> /dev/null; then
     sudo pacman -Sy --noconfirm ansible
 fi
 
+sudo pacman -Sy --noconfirm python-passlib unzip
+
 # Clone the dotfiles repository.
 git clone https://github.com/Creaous/dotfiles.git
 cd dotfiles
