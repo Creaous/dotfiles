@@ -109,7 +109,7 @@ packages:
   - name: dolphin # file manager
     install: true
     configs:
-      - src: ../.config/dolphin/dark.qss
+      - src: ../.local/share/dolphin/dark.qss
         dest: /home/{{ user }}/.local/share/dolphin/dark.qss
         mode: "0644"
   - name: kwalletmanager # wallet manager
