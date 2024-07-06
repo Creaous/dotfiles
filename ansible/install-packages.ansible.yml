@@ -10,7 +10,12 @@
         update_cache: true
       loop: "{{ packages }}"
       when: item.install
-
+    - name: Create config directories for each package
+      ansible.builtin.file:
+        path: "{{ item.1.dest | regex_replace('/[^/]*$', '') }}"
+        state: directory
+      loop: "{{ packages | subelements('configs') }}"
+      ignore_errors: true
     - name: Copy config files for each package
       ansible.builtin.copy:
         src: "{{ item.1.src }}"
@@ -18,4 +23,5 @@
         mode: "{{ item.1.mode }}"
         owner: "{{ item.1.owner | default(user) }}"
         group: "{{ item.1.group | default(user) }}"
+        force: true
       loop: "{{ packages | subelements('configs') }}"
