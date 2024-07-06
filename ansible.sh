@@ -18,6 +18,8 @@ cd dotfiles
 
 chmod +x ansible/run-all.sh
 
-echo "Change username and password in config.yml: nano ansible/config.yml"
+cd ansible
+
+echo "Change username and password in config.yml: nano config.yml"
 echo "For these reasons, we are not automatically running it for you."
-echo "Once ready to install everything, run ./ansible/run-all.sh"
+echo "Once ready to install everything, run: ./run-all.sh"
