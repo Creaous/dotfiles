@@ -4,7 +4,7 @@ packages:
   - name: swaync # notification daemon
     install: true
     configs:
-      - src: ../.config/dunst/dunstrc
+      - src: ../.config/swaync/config.json
         dest: /home/{{ user }}/.config/swaync/config.json
         mode: "0644"
       - src: ../.config/swaync/style.css
