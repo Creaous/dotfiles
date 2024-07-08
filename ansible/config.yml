@@ -112,6 +112,9 @@ packages:
       - src: ../.local/share/dolphin/dark.qss
         dest: /home/{{ user }}/.local/share/dolphin/dark.qss
         mode: "0644"
+  - name: kwallet # wallet for credentials
+    install: true
+    configs: []
   - name: kwalletmanager # wallet manager
     install: true
     configs: []
