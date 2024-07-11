@@ -166,3 +166,6 @@ packages:
   - name: xorg-xhost # fix running apps as root user
     install: true
     configs: []
+  - name: xwaylandvideobridge-git # xwayland video bridge
+    install: true
+    configs: []
