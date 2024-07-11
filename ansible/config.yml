@@ -169,3 +169,6 @@ packages:
   - name: xwaylandvideobridge-git # xwayland video bridge
     install: true
     configs: []
+  - name: xdg-desktop-portal-hyprland # xdg desktop portal
+    install: true
+    configs: []
