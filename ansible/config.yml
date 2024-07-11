@@ -163,3 +163,6 @@ packages:
   - name: nvidia-settings # nvidia driver
     install: true
     configs: []
+  - name: xorg-xhost # fix running apps as root user
+    install: true
+    configs: []
