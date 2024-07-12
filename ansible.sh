@@ -9,7 +9,7 @@ pacman -Qs python-passlib &> /dev/null || sudo pacman -Sy --noconfirm python-pas
 pacman -Qs unzip &> /dev/null || sudo pacman -Sy --noconfirm unzip
 
 # Clone the dotfiles repository.
-git clone https://github.com/Creaous/dotfiles.git
+git clone https://github.com/Creaous/dotfiles.git --depth 1
 cd dotfiles
 
 chmod +x ansible/run-all.sh
