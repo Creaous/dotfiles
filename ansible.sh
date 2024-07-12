@@ -2,16 +2,9 @@
 
 echo "Ensuring dependencies are installed"
 
-# Check if git is installed, if not, install it using pacman.
-if ! command -v git &> /dev/null; then
-    sudo pacman -Sy --noconfirm git
-fi
-
-# Check if ansible is installed, if not, install it using pacman.
-if ! command -v git &> /dev/null; then
-    sudo pacman -Sy --noconfirm ansible
-fi
-
+# Check if everything required is installed.
+pacman -Qs git &> /dev/null || sudo pacman -Sy --noconfirm git
+pacman -Qs ansible &> /dev/null || sudo pacman -Sy --noconfirm ansible
 pacman -Qs python-passlib &> /dev/null || sudo pacman -Sy --noconfirm python-passlib
 pacman -Qs unzip &> /dev/null || sudo pacman -Sy --noconfirm unzip
 
