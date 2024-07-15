@@ -34,7 +34,7 @@
       when: nvidia_utils_beta.stdout is not search('nvidia-utils-beta')
     - name: Install lib32-nvidia-utils-beta
       yay:
-        name: nvidia-utils-beta
+        name: lib32-nvidia-utils-beta
         state: present
         update_cache: true
       when: lib32_nvidia_utils_beta.stdout is not search('lib32-nvidia-utils-beta')
@@ -60,7 +60,7 @@
     - name: Add nvidia.NVreg_EnableGpuFirmware if not present (null register)
       ansible.builtin.command:
         cmd: "sudo sed -i 's/GRUB_CMDLINE_LINUX=\"\\(.*\\)\"/GRUB_CMDLINE_LINUX=\"\\1 nvidia.NVreg_EnableGpuFirmware=0\"/g' /etc/default/grub"
-      when: nvidia_register.rc == 1  # Check if grep command exited with no matches (exit code 1)
+      when: nvidia_register.rc == 1 # Check if grep command exited with no matches (exit code 1)
       changed_when: false
     - name: Update GRUB
       ansible.builtin.command:
