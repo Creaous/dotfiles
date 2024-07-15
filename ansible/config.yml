@@ -133,7 +133,13 @@ packages:
   - name: blueman # bluetooth manager
     install: true
     configs: []
+  - name: qt6-multimedia-ffmpeg
+    install: true
+    configs: []
   - name: pipewire # audio
+    install: true
+    configs: []
+  - name: pipewire-jack # jack audio
     install: true
     configs: []
   - name: pipewire-pulse # pulseaudio
