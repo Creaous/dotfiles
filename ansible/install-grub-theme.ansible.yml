@@ -24,6 +24,6 @@
         line: 'GRUB_THEME="/boot/grub/themes/hyperfluent/hyperfluent.theme"'
         insertafter: EOF
     - name: Update GRUB
-      ansible.builtin.command: grub-mkconfig -o /boot/grub/grub.cfg
-      args:
-        creates: /boot/grub/grub.cfg
+      ansible.builtin.command:
+        cmd: grub-mkconfig -o /boot/grub/grub.cfg
+      changed_when: false
