@@ -10,11 +10,14 @@ packages:
       - src: ../.config/swaync/style.css
         dest: /home/{{ user }}/.config/swaync/style.css
         mode: "0644"
-  - name: kitty # terminal emulator
+  - name: alacritty # terminal emulator
     install: true
     configs:
-      - src: ../.config/kitty/kitty.conf
-        dest: /home/{{ user }}/.config/kitty/kitty.conf
+      - src: ../.config/alacritty/alacritty.toml
+        dest: /home/{{ user }}/.config/alacritty/alacritty.toml
+        mode: "0644"
+      - src: ../.config/alacritty/catppuccin-mocha.toml
+        dest: /home/{{ user }}/.config/alacritty/catppuccin-mocha.toml
         mode: "0644"
   - name: swayidle # idle manager
     install: true
