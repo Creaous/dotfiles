@@ -67,7 +67,7 @@ packages:
       - src: ../.config/hypr/brightness.sh
         dest: /home/{{ user }}/.config/hypr/brightness.sh
         mode: "a+x"
-  - name: backlight_control # controls laptop backlight
+  - name: brightnessctl # controls laptop backlight
     install: true
     configs: []
   - name: nwg-displays # monitor configuration

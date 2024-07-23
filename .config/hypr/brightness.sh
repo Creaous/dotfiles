@@ -1,5 +1,7 @@
 #!/bin/bash
 
+laptop_device=amdgpu_bl2
+
 # Function to increase brightness
 increase_brightness() {
     local brightness=$1
@@ -33,19 +35,28 @@ raw_adjustment=${1:1}
 # Get the list of connected displays
 displays=$(ddcutil detect)
 
-# Check if the variable 'displays' contains the string "Laptop display"
-if [[ $displays == *"Laptop display"* ]]; then
-    echo "Adjusting brightness for laptop display"
-    backlight_control $adjustment
-fi
-
 # Check if the adjustment starts with + or -
 case $adjustment in
     +*) operation="increase";;
     -*) operation="decrease";;
-    *)  echo "Usage: $0 <+-value>"; exit 1;;
+    *)  operation="set"; echo "No value specified, assuming that this is a SET operation.";;
 esac
 
+
+# Check if the variable 'displays' contains the string "Laptop display"
+if [[ $displays == *"Laptop display"* ]]; then
+    echo "Adjusting brightness for laptop display"
+    if [ "$operation" = "increase" ]; then
+        echo "Increasing brightness for laptop display"
+        brightnessctl --device=$laptop_device set +$raw_adjustment
+    elif [ "$operation" = "decrease" ]; then
+        echo "Decreasing brightness for laptop display"
+        brightnessctl --device=$laptop_device set $raw_adjustment-
+    elif [ "$operation" = "set" ]; then
+        echo "Setting brightness for laptop display"
+        brightnessctl --device=$laptop_device set $1
+    fi
+fi
 
 # Use awk to get real display numbers
 display_list=$(echo "$displays" | awk '/^Display [0-9]/{print $2}')
