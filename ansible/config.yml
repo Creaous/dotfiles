@@ -181,3 +181,6 @@ packages:
   - name: xdg-desktop-portal-hyprland # xdg desktop portal
     install: true
     configs: []
+  - name: archlinux-xdg-menu # xdg menu
+    install: true
+    configs: []
